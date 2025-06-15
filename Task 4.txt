@@ -1,0 +1,26 @@
+TASK 4: Basic Chatbot
+
+Scope:
+Goal: Build a simple rule-based chatbot.
+Input from user like: "hello", "how are you", "bye". give me a proper proper python code
+Predefined replies like: "Hi!","I'm fine, thanks!", "Goodbye!".Key Concepts Used: if-elif, functions, loops, input /output.
+
+Solutiion 
+
+
+# Let's create a simple chatbot function
+def basic_chatbot():
+    print("ChatBot: Hey there! I'm here to chat with you. Just type 'bye' when you want to wrap things up.\n")
+
+    while True:
+        user_input = input("You: ").strip().lower()
+
+        if user_input == "hello":
+            print("ChatBot: Hi there!")
+        elif user_input == "how are you":
+            print("ChatBot: I'm doing well, thanks for asking!")
+        elif user_input == "bye":
+            print("ChatBot: See you later!")
+            break
+        else:
+            print("ChatBot: I can only chat about 'hello', 'how are you', or 'bye'.")

@@ -1,0 +1,59 @@
+Task 1 
+
+Create a simple text based hangman game whrere the players gusses a word one letter at a time. 
+Use a small list of 5 predefined words (no need to use a file or API).
+● Limit incorrect guesses to 6.
+● Basic console input/output — no graphics or audio.
+Key Concepts Used: random, while loop, if-else, strings, lists.
+
+Solution
+
+import random
+
+# List of predefined words
+word_list = ["apple", "train", "plant", "bread", "house"]
+
+# Select a random word from the list
+secret_word = random.choice(word_list)
+
+# Create display with underscores for each letter
+display = [""] * len(secret_word)
+
+# Track wrong guesses and attempts
+wrong_guesses = 0
+max_attempts = 6
+guessed_letters = []
+
+print("Welcome to Hangman!")
+print("Guess the word, one letter at a time.")
+print("You can make 6 incorrect guesses.\n")
+
+# Game loop
+while wrong_guesses < max_attempts and "_" in display:
+    print("Word:", " ".join(display))
+    guess = input("Enter a letter: ").lower()
+
+    # Input validation
+    if not guess.isalpha() or len(guess) != 1:
+        print("Enter a single alphabet letter.\n")
+        continue
+    if guess in guessed_letters:
+        print("You already guessed that letter.\n")
+        continue
+
+    guessed_letters.append(guess)
+
+    if guess in secret_word:
+        print("Correct guess!\n")
+        for i in range(len(secret_word)):
+            if secret_word[i] == guess:
+                display[i] = guess
+    else:
+        wrong_guesses += 1
+        print(f"Wrong guess! Attempts left: {max_attempts - wrong_guesses}\n")
+
+# Final result
+if "_" not in display:
+    print("You won! The word was:", secret_word)
+else:
+    print("Game Over! The word was:", secret_word)

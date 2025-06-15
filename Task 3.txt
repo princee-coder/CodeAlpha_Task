@@ -1,0 +1,26 @@
+TASK 3: Task Automation with Python Scripts
+
+Goal: Automate a small, real-life repetitive task.Pick One of These ldeas:
+Move alljpg files froma folder to a new folder.
+Extract all email addresses from a.txt file and save them to another file.Scrape the title of a fixed webpage and save it.
+Key Concepts Used: os, shutil, re, requests, file handling.
+
+
+Solution
+
+import os
+import shutil
+
+source_folder = "source_images"
+destination_folder = "jpg_images"
+
+# Create the destination folder if it doesn't already exist
+if not os.path.exists(destination_folder):
+os.makedirs(destination_folder)
+
+# Move all .jpg files from the source to the destination
+for file in os.listdir(source_folder):
+if file.lower().endswith(".jpg"):
+shutil.move(os.path.join(source_folder, file), os.path.join(destination_folder, file))
+
+print("All .jpg files have been moved successfully.")
